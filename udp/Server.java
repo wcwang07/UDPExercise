@@ -1,8 +1,12 @@
+package udp;
+
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+
 
 public class Server extends Thread {
 	
@@ -12,7 +16,7 @@ public class Server extends Thread {
 	private Thread runningThread;
 	private boolean running;
 	private String filePath;
-	private int IP;
+	private String IP;
 	
 	public Server(String recvPort, String filePath) {
 		this.port = Integer.parseInt(recvPort);
@@ -53,9 +57,9 @@ public class Server extends Thread {
 	}
 	public static void main(String[] args) {
 		
-		String		recvPort;
+		String recvPort;
 		
-		String 		filePath;
+		String filePath;
 
 		// Get the parameters
 		if (args.length < 2) {
@@ -63,15 +67,13 @@ public class Server extends Thread {
 			System.exit(-1);
 		}
 
-		
 		recvPort = args[0];
 		filePath = args[1];
-
-
-		// TO-DO: Construct UDP client class and try to send messages
-		System.out.println("Constructing udp client");
+		
+		// TO-DO: Construct UDP Server class and try to send messages
+		System.out.println("Constructing udp server");
 		new Server(recvPort, filePath).start();
-		System.out.println("Sending messages");
+		System.out.println("Server started...");
 		
 	}
 	
